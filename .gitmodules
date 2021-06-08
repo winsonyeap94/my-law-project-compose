@@ -1,0 +1,6 @@
+[submodule "my-law-project"]
+	path = my-law-project
+	url = https://github.com/winsonyeap94/my-law-project.git
+[submodule "my-law-project-dash"]
+	path = my-law-project-dash
+	url = https://github.com/winsonyeap94/my-law-project-dash.git
