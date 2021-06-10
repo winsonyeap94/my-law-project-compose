@@ -1,0 +1,38 @@
+# For more information on how to setup a docker-compose, refer:
+# https://www.baeldung.com/ops/docker-compose
+
+version: '3'
+services:
+  dash:
+    # Path to dockerfile.
+    # '.' represents the current directory in which docker-compose.yml is present.
+    build: ./my-law-project-dash/.
+
+    # Mapping of container port to host
+    ports:
+      - "1689:1689"
+    expose:  # Optional, can be skipped if EXPOSE is set in Dockerfile
+      - "1689"
+
+    # Link database container to app container for reachability.
+    # <container>:<internal-uri-reference>
+    links:
+      - "warehouse:my-law-network"  # Optional method instead of networks.
+    networks:  # Allows connection between services
+      - my-law-network
+
+    depends_on:
+      - warehouse
+
+  warehouse:
+    build: ./my-law-project/.
+    ports:
+      - "6128:6128"
+    expose:  # Optional, can be skipped if EXPOSE is set in Dockerfile
+      - "6128"
+    networks:  # Allows connection between services
+      - my-law-network
+
+networks:
+  my-law-network: {}
+    
