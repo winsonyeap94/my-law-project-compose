@@ -4,6 +4,9 @@
 version: '3'
 services:
   dash:
+    # Container name
+    container_name: dash
+
     # Path to dockerfile.
     # '.' represents the current directory in which docker-compose.yml is present.
     build: ./my-law-project-dash/.
@@ -29,6 +32,7 @@ services:
       - campaign
 
   warehouse:
+    container_name: warehouse
     build: ./my-law-project/.
     ports:
       - "6128:6128"
@@ -38,6 +42,7 @@ services:
       - my-law-network
 
   campaign:
+    container_name: campaign
     build: ./marketing_optimisation_law/.
     ports:
       - "3000:3000"
