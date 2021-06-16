@@ -4,3 +4,6 @@
 [submodule "my-law-project-dash"]
 	path = my-law-project-dash
 	url = https://github.com/winsonyeap94/my-law-project-dash.git
+[submodule "marketing_optimisation_law"]
+	path = marketing_optimisation_law
+	url = https://github.com/seayitheng/marketing_optimisation_law.git
