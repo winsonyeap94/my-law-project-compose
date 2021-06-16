@@ -18,11 +18,15 @@ services:
     # <container>:<internal-uri-reference>
     links:
       - "warehouse:my-law-network"  # Optional method instead of networks.
+      - "campaign:my-law-network-campaign"
+      
     networks:  # Allows connection between services
       - my-law-network
+      - my-law-network-campaign
 
     depends_on:
       - warehouse
+      - campaign
 
   warehouse:
     build: ./my-law-project/.
@@ -33,6 +37,15 @@ services:
     networks:  # Allows connection between services
       - my-law-network
 
+  campaign:
+    build: ./marketing_optimisation_law/.
+    ports:
+      - "3000:3000"
+    expose:  # Optional, can be skipped if EXPOSE is set in Dockerfile
+      - "3000"
+    networks:  # Allows connection between services
+      - my-law-network-campaign
+
 networks:
   my-law-network: {}
-    
+  my-law-network-campaign: {}
